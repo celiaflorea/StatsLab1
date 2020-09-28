@@ -1,0 +1,56 @@
+code cheatsheet
+
+
+#dplyr demo
+
+library(dplyr)
+
+group_means <- gapminder_data %>%
+              group_by(continent) %>%
+              summarize(mean_lifeExp = mean(lifeExp))
+              
+#ggplot demo 
+classic bar chart 
+
+ggplot(group_means, aes(x = continent, y = mean_lifeExp))+
+  geom_bar(stat = "identity")+
+  ylab("Mean Life Expectancy")+
+  xlab("Continent")+
+  theme_classic()+
+  ggtitle("Mean Life Expectancy by Continent")
+  
+  
+  GGPLOT - scatter - note for line add group value: group = 1
+  
+  ggplot(group_means, aes(x = continent, y = mean_lifeExp, group = 1))+
+    geom_point()+
+    geom_line( )
+
+
+ggplot error bars - bar graph
+
+group_means <- gapminder_data %>%
+                group_by(continent) %>%
+                summarize(mean_lifeExp = mean(lifeExp),
+                          sd_lifeExp = sd(lifeExp))
+
+ggplot(group_means, aes(x = continent, y = mean_lifeExp))+
+  geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp,
+                    ymax = mean_lifeExp + sd_lifeExp),
+                width = .25)
+                
+  ggplot line graph error bars               
+                
+                ggplot(group_means, aes(x = continent,
+                        y = mean_lifeExp,
+                        group = 1))+
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp,
+                    ymax = mean_lifeExp + sd_lifeExp),
+                width = .25)
+                
+                
+                
+                

@@ -1,0 +1,117 @@
+---
+title: "lab2.descriptives"
+author: "celiaflorea"
+date: "9/15/2020"
+output: html_document
+---
+
+
+```{r}
+gapminder_data <- read.table("open_data/gapminder.csv",
+                             sep = ",",
+                             header = TRUE )
+```
+```{r}
+library(dplyr)
+```
+
+```{r}
+
+```
+#dplyr demo
+
+```{r}
+group_means <- gapminder_data %>%
+              group_by(continent) %>%
+              summarize(mean_lifeExp =group_mean(lifeExp),
+                        median_lifeExp = median(lifeExp),
+                        sd_lifeExp = sd(lifeExp),
+```
+
+```{r}
+var_lifeExp = var(lifeExp))
+
+knitr::kable(head(group_means))
+```
+
+#ggplot demo
+```{r}
+
+library(ggplot2)
+
+group_means <- gapminder_data %>%
+              group_by(continent) %>%
+              summarize(mean_lifeExp = mean(lifeExp))
+                        
+ggplot(group_means, aes(x = continent, y = mean_lifeExp))+
+  geom_bar(stat = "identity")+
+  ylab("Mean Life Expectancy")+
+  xlab("Continent")+
+  theme_classic()+
+  ggtitle("Mean Life Expectancy by Continent")
+
+```
+
+#line graph demo 
+
+```{r}
+ggplot(group_means, aes(x = continent, y = mean_lifeExp, group = 1))+
+    geom_point()+
+    geom_line( )
+```
+#error bars 
+
+```{r}
+group_means <- gapminder_data %>%
+              group_by(continent) %>%
+              summarize(mean_lifeExp = mean(lifeExp),
+                        sd_lifeExp = sd(lifeExp))
+                        
+ ggplot(group_means, aes(x = continent, y = mean_lifeExp, group = 1))+
+    geom_bar(stat = "identity")+
+    ylab("Mean Life Expectancy")+
+    xlab("Continent")+
+    theme_classic()+
+    ggtitle("Mean Life Expectancy by Continent") 
+    geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp, 
+                      ymax = mean_lifeExp + sd_lifeExp), 
+                      width = .25)
+ 
+
+```              
+              
+```{r}
+group_means <- gapminder_data %>%
+                group_by(continent) %>%
+                summarize(mean_lifeExp = mean(lifeExp),
+                          sd_lifeExp = sd(lifeExp))
+
+ggplot(group_means, aes(x = continent, y = mean_lifeExp))+
+  geom_bar(stat="identity") +
+  geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp,
+                    ymax = mean_lifeExp + sd_lifeExp),
+                width = .25)
+```
+```{r}
+ggplot(group_means, aes(x = continent,
+                        y = mean_lifeExp,
+                        group = 1))+
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp,
+                    ymax = mean_lifeExp + sd_lifeExp),
+                width = .25)
+
+```
+```{r}
+ggplot(group_means, aes(x = continent,
+                        y = mean_lifeExp,
+                        group = 1))+
+  geom_point() +
+  geom_line() +
+  geom_errorbar(aes(ymin = mean_lifeExp - sd_lifeExp,
+                    ymax = mean_lifeExp + sd_lifeExp),
+                width = .25)
+```
+ 
+ 
