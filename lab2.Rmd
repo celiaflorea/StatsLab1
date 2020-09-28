@@ -29,7 +29,7 @@ numbers_to_test <- c(2,4,6,7,7,7,3,4,6,7, mean(scores), 89,57,99,34,57)}
 
 plot (sum_sq_deviations)
 ```
-Confidence: 50%
+Confidence: 50% 
 
 #2 Write a custom R function for any one of the following descriptive statistics: median, mode, standard deviation, variance. Demonstrate that it produces the same value as the base R function given some set of numbers.
 
@@ -43,13 +43,41 @@ mean(scores)
 #variance 
 sum (sum_sq_deviations[i] /(length(scores)-1))
 var(scores)
+
+#standard deviation
+sum(sqrt(sum_sq_deviations[i] /(length(scores)-1)))
+sd(scores)
+
+
 ```
-Confidence 99%
+Confidence 99% 
+
 
 
 #3 Imagine the same instructor taught a morning, afternoon, and evening section of the same course. And, the average scores for each section on a midterm were 85% for the morning, 90% for the afternoon, and 93% for the evening sections. Create a data.frame representing these means for each section. Then, use ggplot2 to plot the means as bar graph. (hint you will need one vector for the class sections, and one vector for the means. Then you can combine them into a data.frame before plotting them)
 
+```{r}
+
+sections<-c("morning","afternoon","evening")
+grades<-c(85,90,93)
+
+my_data <- data.frame(sections, grades)
+
+library(ggplot2)
+
+ggplot(my_data, aes(x=sections, y=grades)) +
+  geom_bar(stat="identity")
+
+```
+Confidence: 75%
+
+
 #4 Imagine there were two instructors, and they each taught different sections in the morning, afternoon and evening. The midterm averages for instructor 1 were 75%, 78%, and 80% in the morning, afternoon, and evening. The midterm averages for instructor 2 were 88%, 76%, and 63% for the morning, afternoon, and evening. Create a data.frame representing the means, the time of day, and the instructors (three columns). Then plot data.frame using ggplot2 as a bar graph.
+
+```{r}
+
+```
+
 
 #5 Import the WHR2018.csv data file, containing measure from the World Happiness report from 2018. For the years 2010 to 2015, what was the mean “healthy life expectancy at birth” for each year (find the mean for each year across countries). Show your results in a table and in a graph using ggplot.
 
