@@ -127,7 +127,7 @@ ggplot(sim_data, aes(x=sample_sizes, y=sim_sample_means, group=1))+
 
 ```{r}
 
-sd_N <- function(x) sqrt(sum(mean(x)-x)^2 / length(x))
+sd_N <- function(x) sqrt(sum((mean(x)-x)^2) / length(x))
 
 sample_sizes <- c(2,5,10,50,100)
 sim_sample_sd <- c()
@@ -139,12 +139,14 @@ for(i in 1:length(sample_sizes)){
 
   summarized_data <- my_data %>%
     group_by(samples) %>%
-    summarize(sample_sd = sd(observations), 
-              sample_sd_N = sd_N(observations))
+    summarize(
+              sample_sd = sd(observations),
+              sample_sd_N = sd_N(observations)
+              )
 
   sim_sample_sd[i] <- mean(summarized_data$sample_sd)
   sim_sample_sd_N[i] <- mean(summarized_data$sample_sd_N)
-}
+  }
 
 sim_data <- data.frame(n = rep(sample_sizes,2),
       est = c(sim_sample_sd_N, sim_sample_sd),
@@ -153,7 +155,7 @@ sim_data <- data.frame(n = rep(sample_sizes,2),
 
 ggplot(sim_data, aes(x=n, y=est, group=formula))+
   geom_point()+
-  geom_line()
+  geom_line()+
   coord_cartesian(ylim = c(0,10))
   
 
