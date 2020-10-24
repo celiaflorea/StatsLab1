@@ -55,10 +55,6 @@ ggplot(means, aes(x = samples, y = sample_mean ))+
 ```
 
 
-# The last two problems concern the concept of using a sample to estimate a property of the population or distribution the sample came from. For example, if we know the mean of a sample, can we be confident that the population has the same mean? If we were trying to guess at the population mean, what statistics from the sample should we use?
-
-#Some sample statistics are “biased”, and may systematically under or overestimate a population parameter. Others are “unbiased”, in this case the sample statistic tends to correctly estimate the population parameter over the long run.
-
 #3 Demonstrate that the sample mean across a range of n, is an unbiased estimator of the population mean using a monte-carlo simulation. (2 points).
 
 #The population is a normal distribution with mean = 10, standard deviation = 5.Test a variety of n (sample size), including n = 2, 5, 10, 50, and 100. For each sample size n, your task is to draw 10,000 samples of that size, then for each sample, calculate the sample mean. If the mean is unbiased, then we expect that “on average” the sample means will be the same as the population mean. To determine if this is true, compute the mean of the sample means that you produce to see if it is close to the population mean. Show the mean of the sample means for each sample size.
@@ -133,7 +129,7 @@ sample_sizes <- c(2,5,10,50,100)
 sim_sample_sd <- c()
 sim_sample_sd_N <- c()
 for(i in 1:length(sample_sizes)){
-  observations <-rnorm(sample_sizes[i]*10000,10,5)
+  observations <- rnorm(sample_sizes[i]*10000,10,5)
   samples <- rep(1:10000, each = sample_sizes[i])
   my_data <- data.frame(samples,observations)
 
@@ -153,13 +149,13 @@ sim_data <- data.frame(n = rep(sample_sizes,2),
       formula = c(rep("N", 5), rep("N-1", 5)))
 
 
-ggplot(sim_data, aes(x=n, y=est, group=formula))+
+ggplot(sim_data, aes(x=n, y=est, group=formula, color=formula))+
   geom_point()+
   geom_line()+
   coord_cartesian(ylim = c(0,10))
   
 
 ```
-
+#note: getting an error on 4: "summarise()` ungrouping output (override with `.groups` argument)" but it seems to be running fine and it doens't point to a specific line that needs fixing so I'm leaving as is. Making a note to ask about this next lab but seems to be processing ok. 
 
 
