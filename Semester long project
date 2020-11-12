@@ -1,0 +1,15 @@
+Semester long project 
+
+-download papja 
+  - allows to write APA report in r, 
+    -creates PDF
+    -save anaylis 
+    
+  - see example of complete project on class site 
+  -create a new folder in r- github enabled
+  
+  -re-analyize exisitng data 
+    - look for something using t-test 
+  -include power ananlysis ? 
+  - produce a power curve - how sensitive design is to produce effects 
+    -particulalry t-test 
