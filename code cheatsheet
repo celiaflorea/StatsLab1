@@ -68,6 +68,58 @@ for(i in 1:length(logical_step)){
     }counter <- o
   }
 
+
+
+zscores (no auto function in R)
+to_zscores <- function(raw, mu, sd){
+  zscores <- (raw-mu)/sd
+  return(zscores)
+} 
+
+some_numbers <- c(1,2,3,4,5)
+
+to_zscores(some_numbers, 5, 1)
+
+to_zscores_b <- function (raw, mu = NULL, sdev = NULL){
+  if (is.null(mu) == TRUE) mu <- mean(raw) 
+  if (is.null (sdev) == TRUE) sdev <- sd(raw) 
+  zscores <- (raw-mu)/sdev
+  return(zscores)
+}
+
+to_zscores_b(some_numbers)
                 
+                
+                code problems downloading xlsx
+                
+                
+function(.jpackage)
+
+function(.jinit)
+
+library(rJava)
+
+library(xlsx)
+
+install.packages(JVM)
+
+install.packages(jinit)
+
+install.packages("JavaGD")
+
+install.packages("jmv")
+
+package_version(JVM)
+
+library(xlsx)
+
+function(javareconf)
+  
+update.packages(checkBuilt = TRUE)
+
+
+uninstall??
+install.packages("JavaGD")
+
                 
                 

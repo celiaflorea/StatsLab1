@@ -1,0 +1,39 @@
+---
+title: "lab9"
+author: "celiaflorea"
+date: "1/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. The following paper links to open data, and describes a design where two chi-square tests are performed for Experiment 1 (A copy of this paper will be made available).
+
+Silver, A. M., Stahl, A. E., Loiotile, R., Smith-Flores, A. S., & Feigenson, L. (2020). When Not Choosing Leads to Not Liking: Choice-Induced Preference in Infancy. Psychological Science, 0956797620954491.
+
+Obtain the data from the online repository, show your code for loading it into R, then conduct the same tests reported in Experiment 1 that the authors conducted. These include one binomial test, and two chi-square tests. Briefly report your re-analysis, and discuss whether you obtained the same values as the authors did (6 points).
+
+
+```{r}
+
+library(xlsx)
+
+the_data <- xlsx::read.xlsx("lab9/When not choosing leads to not liking_Data.xlsx", sheetIndex = 1)
+
+the_data <- read.csv(file="lab9/infant_choice_data.csv")
+
+library(dplyr)
+e1_data <- the_data %>%
+  filter(ExperimentNumber == "1")
+```
+```{r}
+
+the_data <- xlsx::read.xlsx(When_not_choosing_leads_to_not_liking_Data.xlsx, sheetIndex = 1)
+
+the_data <- read.csv(file="infant_choice_data.csv")
+
+
+```
+

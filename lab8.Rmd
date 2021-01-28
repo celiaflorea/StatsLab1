@@ -52,12 +52,12 @@ z.test(sample_mean = 50,
        mu = 40,
        sigma = 7)
 
+
 z.test(1,1,0,1)
 
 
-
 ```
-The probability of finding a sample mean greater than 50 within the specified population parameters is very small (p=4.570531e-13). This makes sense since with a population mean of 40 and sigma/standard deviation of 7, the sample mean of 50 is already more than one whole standard deviation from the population mean. (The substantial difference between population and sample means is likely due to the smallish sample size of n=25.)
+The probability of finding a sample mean greater than 50 within the specified population parameters is very small (z=4.570531e-13, area beyond z=0). This makes sense since with a population mean of 40 and sigma/standard deviation of 7, the sample mean of 50 is already more than one whole standard deviation from the population mean. (The substantial difference between population and sample means is likely due to the smallish sample size of n=25.)
 ```{r}
 
 z.test <- function(sample_mean, sample_size, mu, sigma, two.tailed=TRUE) {
@@ -101,6 +101,7 @@ z.test <- function(sample_mean,
    
 
 }
+
 
 z.test(sample_mean = 37, 
        sample_size = 5,
