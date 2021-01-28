@@ -1,0 +1,104 @@
+---
+title: "lab6.2"
+author: "celiaflorea"
+date: "1/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1.Write a function that conducts a randomization test for the mean difference between two groups, and show that it works. Specifically, using your function, conduct a randomization test on the same data we used in the above example from lab. Report the results and briefly discuss what the results of the randomization tell you. (6 points). Extra: if the observed mean difference in the experiment was found to be .5, what would you have concluded from the randomization test?
+
+Inputs:
+
+- the inputs should include a vector for group 1, and vector for group 2, and the number of permutations/re-samplings of the data to create.
+
+Outputs:
+
+- output each group mean, and the difference between group means 
+- output a histogram of the sampling distribution of the possible mean differences produced by the randomization process
+- output the probability or odds of obtaining the observed mean difference or larger.
+
+
+
+```{r}
+
+group_one <- c(3,4,5,6,7)
+group_two <- c(5,3,2,4,6)
+
+radomization_test <- function(A, B, resamples = 1000){
+  group_A_mean <- mean(A)
+  group_B_mean <- mean(B)
+  mean_difference <- group_A_mean - group_B_mean
+  
+  all_means <- c(A,B)
+  
+  possible_differences <- c()
+  for(i in 1:resamples){
+    resample <- sample(all_means)
+    new_A_mean <- mean(resample[1:length(A)])
+    new_B_mean <- mean(resample[(length(A)+1):length(all_means)])
+    possible_differences[i] <- new_A_mean-new_B_mean
+  }
+   
+library(ggplot2)
+  
+  the_plot <- qplot(possible_differences)+
+    geom_histogram(color="orange")+
+    geom_vline(xintercept=mean_difference, color ="red")+
+    theme_classic()
+  
+  p_value <- length(possible_differences[possible_differences >= mean_difference])/resamples
+  
+  test_output <- list( A_mean = group_A_mean,
+                       B_mean = group_B_mean,
+                       difference = mean_difference, 
+                       radomization = possible_differences,
+                       plot = the_plot,
+                       p_value = p_value)
+                       
+
+  return(test_output)
+}
+
+radomization_test(A=group_one, 
+                  B=group_two, 
+                  resamples = 1000)
+
+
+
+
+
+
+```
+
+The results here show that our group mean difference of 1 is not the most likely value. When we randomly resample possible means the most frequent value is 0 and the frequencies of all possible means are normally distributed. (The frequency for mean differences of 0 is about double that of the found difference of 1.) However, the obtained p-value 0.244 shows that the found mean difference of 1 is not at all unlikely nor is it significant/meaningful. 
+
+
+```{r}
+
+the_data <- read.csv("open_data/SchroederEpley2015data.csv", header = TRUE)
+
+library(dplyr)
+
+group_0 <- the_data %>%
+  filter(CONDITION == 0) %>%
+  select(Intellect_Rating)
+  
+group_0 <- group_0$Intellect_Rating
+
+group_1 <- the_data %>%
+  filter(CONDITION == 1) %>%
+  select(Intellect_Rating)
+
+group_1 <- group_1$Intellect_Rating
+
+radomization_test(A=group_0, 
+                  B=group_1, 
+                  resamples = 1000)
+
+```
+
