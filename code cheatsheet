@@ -121,5 +121,16 @@ update.packages(checkBuilt = TRUE)
 uninstall??
 install.packages("JavaGD")
 
+
+___
+function name {package}
+eg t.test {stats}
                 
+                
+code snippet - put code into body text 
+`r + function` (note not parens but slash under the tilda on keyboard)
+
+eg: The correlation was $r$ = `r round(my_cor$estimate, digits=2)`, $p$ = `r round(my_cor$p.value, digits=2)`
+
+note round function also used here to bring caculated values to 2 decimal places 
                 

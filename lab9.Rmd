@@ -31,12 +31,20 @@ e1_data <- the_data %>%
 
 ```{r}
 
-file<-system.file("data"(When_not_choosing_leads_to_not_liking_Data, package = "xlsx"))
+file<-system.file("data"("When_not_choosing_leads_to_not_liking_Data", package = "xlsx"))
                    
 the_data <- xlsx::read.xlsx(When_not_choosing_leads_to_not_liking_Data.xlsx, sheetIndex = 1)
 
 the_data <- read.csv(file="infant_choice_data.csv")
 
+
+```
+
+```{r}
+
+library(xlsx)
+
+the_data <- read.csv(file="lab9/infant_choice_data.csv","When_not_choosing_leads_to_not_liking_Data", header = TRUE)
 
 ```
 
