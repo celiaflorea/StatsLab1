@@ -133,4 +133,12 @@ code snippet - put code into body text
 eg: The correlation was $r$ = `r round(my_cor$estimate, digits=2)`, $p$ = `r round(my_cor$p.value, digits=2)`
 
 note round function also used here to bring caculated values to 2 decimal places 
+
+
+lab9 do i need this line/?
+ the_data <- read.csv(file="lab9/infant_choice_data.csv")
+ 
+ #library(readxl)
+
+#read_excel("lab9/When not choosing leads to not liking_Data")
                 
