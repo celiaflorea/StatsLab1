@@ -1,3 +1,11 @@
 Q's for class
 
 How to get the little drop down menau of options when using $ on a function?
+
+
+
+
+
+    #if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
+
+    #devtools::install_github("crsh/papaja")

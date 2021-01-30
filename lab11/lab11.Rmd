@@ -35,26 +35,37 @@ We found a positive correlation `r papaja::apa_print(my_cor)$full_result`.
 
 ```{r}
 
+sim_rs <- replicate(1000,cor(sample(X),sample(Y)))
+    hist(sim_rs)
+
+length(sim_rs[sim_rs >= my_cor$estimate])/1000
+
+
 ```
 
 
 2. Using the variables X and Y above, and assuming that the values could be re-ordered in any way, report the following:
 
     A. the smallest possible sum of cross-products (1 point)
+    
+```{r}
+
+sum(sort(X)*sort(Y, decreasing = TRUE))
+
+```
 
     B. the largest possible sum of cross-products (1 point)
     
-    
-    #if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
-
-    #devtools::install_github("crsh/papaja")
-
 ```{r}
 
-library(papaja)
-
-library(ggplot2)
-
+sum(sort(X)*sort(Y))
 
 ```
+    
+
+
+
+
+  
+
 
