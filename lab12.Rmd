@@ -16,7 +16,7 @@ Problems
 Y <- c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10)
 X <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
 
-No, the data do not fit a linear regression. At first glance of the plot this seems to be the case- the result appears to be curvilinear and the values of X (the IV) do not permit predictions of Y (the DV). To be sure I ran the data through several of the processes from the lab12 text below and played around a bit to confirm that there is no linear correlation. Most importantly the correlation value from the cor.test = 0, shows that the relation between the variables X and Y is not linear. The p value of 1 also suggests that there is no meaningful statistical relation between the variables.
+No, the data do not fit a linear regression. At first glance of the plot this seems to be the case- the result appears to be curvilinear and the values of X (the IV) do not permit predictions of Y (the DV). To be sure I ran the data through several of the processes from the lab12 text below and played around a bit to confirm that there is no linear correlation. Most importantly the correlation value from the cor.test = 0, shows that the relation between the variables X and Y is not linear. The p value of 1 also suggests that there is no statistically meaningful linear relation between the variables (that is, for this particular test/in the linear model).
 
 ```{r}
 
