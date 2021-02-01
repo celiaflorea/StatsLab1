@@ -9,3 +9,10 @@ How to get the little drop down menau of options when using $ on a function?
     #if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
 
     #devtools::install_github("crsh/papaja")
+    
+    
+    lab 10
+    t test in r
+    shouldn't the sum of less/greater p-values equal the two tailed test ?
+    difference because it is randomising the sample here?
+    generally why two.sided and less/greater - rather than two-tailed and uppper/lower'??
