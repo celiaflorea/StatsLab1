@@ -1,0 +1,89 @@
+---
+title: "lab12"
+author: "celiaflorea"
+date: "1/31/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Problems
+
+    Should you do a linear regression on this data? Explain.
+
+Y <- c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10)
+X <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
+
+No, the data do not fit a linear regression. At first glance of the plot this seems to be the case- the result appears to be curvilinear and the values of X (the IV) do not permit predictions of Y (the DV). To be sure I ran the data through several of the processes from the lab12 text below and played around a bit to confirm that there is no linear correlation. Most importantly the correlation value from the cor.test = 0, shows that the relation between the variables X and Y is not linear. The p value of 1 also suggests that there is no meaningful statistical relation between the variables.
+
+```{r}
+
+Y <- c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10)
+X <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
+
+plot(X,Y)
+
+```
+
+
+```{r}
+
+some_data <- data.frame(Y_dv = Y, X_iv= X)
+
+lm(Y_dv ~ X_iv, data = some_data)
+
+save_model <- lm(Y_dv ~ X_iv, data=some_data)
+summary(save_model)
+
+lm(formula = Y_dv ~ X_iv, data = some_data)
+
+cor.test(some_data$Y_dv,some_data$X_iv)
+
+summary(save_model)$r.squared
+
+sqrt(summary(save_model)$r.squared)
+
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(some_data, aes(x=X_iv, y=Y_dv))+
+  geom_point()+
+  geom_smooth(method='lm', se=FALSE)
+
+```
+
+```{r}
+
+some_data2 <- data.frame(Y = rnorm(4*10,0,1),
+                         X = rnorm(4*10,0,1),
+                        set = rep(1:4,each=10))
+
+ggplot(some_data2, aes(x=X, y=Y))+
+  geom_point()+
+  geom_smooth(method='lm', se=FALSE)+
+  facet_wrap(~set)
+
+
+library(ggpmisc)
+formula <- y ~ x
+ggplot(some_data, aes(x= X_iv, y = Y_dv)) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = formula) +
+  stat_poly_eq(formula = formula, parse = TRUE)
+
+```
+```{r}
+
+Y <- c(10,9,8,7,6,5,4,3,2,1,2,3,4,5,6,7,8,9,10)
+X <- c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19)
+
+sort(Y, decreasing = TRUE)
+sort(X, decreasing = TRUE)
+
+plot(X,Y)
+```
+
