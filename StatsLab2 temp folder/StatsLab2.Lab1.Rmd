@@ -1,0 +1,217 @@
+---
+title: "StatsLab2.Lab1"
+author: "celiaflorea"
+date: "2/11/2021"
+bibliography: export-data.bib
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Written Problem#
+
+QALMRI for @slamecka_retroactive_1960
+
+### I.	Question
+
+  a.	“Big picture” question
+  
+  - Slamecka (1960) notes that all of the research prior to this study on retroactive            inhibition (RI) has been tested on nonsense syllables but not on connected discourse         (prose)
+    - So, the big picture question is (?): Does the RI occur when participants study prose in a memory task, in the same way that has been observed in tasks which use nonsense syllables? 
+(It seems one unstated assumption that reading connected discourse would facilitate memory and reduce interference from interpolated learning sessions between memory tasks.) 
+
+  b.	The specific question(s)
+  
+  - Does the inverse relationship observed between RI and original learning (OL), mediated by the degrees of interpolated learning (IL) in the context of memory tasks involving nonsense syllables also apply to learning tasks which use prose? 
+
+  c.	The connection between the two
+
+  - This is a direct test of the premise that prose would help facilitate memory and that we would see less interference from IL when participants were presented with prose instead of nonsense syllables which lack context and meaning
+
+### II.	Alternative Hypotheses
+
+  a.	Main hypothesis: 
+  
+  -	There is no difference in RI when experimenters use nonsense syllables or prose in memory tasks
+
+  b.	Other alternatives: 
+  
+  -	N/A(?)
+
+### III.	Logic & Design
+
+  a.	Independent variable(s)
+
+  -	Construct 1: Original learning (OL)
+  
+      -The memory task information that is presented to rehearsed by participants
+          
+      - Operational Definition: Learning in phase 1 of the experiment, the original memory task material is presented to participants
+      
+  -	Construct 2: Interpolated learning (IL) 
+  
+      -The intermediate task between when the memory task material (OL) is introduced and then memory tested 
+        
+       - Operational Definition
+       
+            -A second set of prose from the same text as the OL 
+              
+            -In the control condition participants viewed a color naming task 
+          
+  b.	Dependent variables(s)
+
+  - Construct: Retroactive inhibition (RI)
+ 
+      -Memory for the OL is measured after the IL and the resultant memory scores are calculated to determine the amount of interference or RI caused by the IL
+      
+    - Operational Definition
+    
+      -When OL is overwritten by interference from IL (when an intermediate task makes it more difficult to remember items from the first task)
+      
+
+### IV.	Method
+
+  a. Participants
+    -	N=32 psychology students 
+
+  b. Stimuli or questionnaires
+
+   -   Materials in the OL and IL were drawn from the same text, modified slightly for length
+    - Each prose segment consisted of 8 sentences, comprised of 20 words each
+
+  - OL and IL materials were presented on a memory drum
+    
+   - Practice and control color materials were also presented on a memory drum
+      
+      
+  c. Procedure
+
+  - The experiment took place over 4, 40 minute sessions 
+  
+  - Participants were divided into groups such that one group had 2 OL trials, another 4 trials and the last 8. Within these there were 0 (control) IL intervening trials, 4 IL or 8 IL split evenly across groups
+
+### V.	Results
+
+  a.	Descriptive
+
+  - Overall mean recall increased with more OL trials
+  
+  b.	Inferential
+
+  - Mixed factorial ANOVAs showed that there were no significant F values at any level of OL practice sessions 
+
+### VI.	Inferences
+
+  a.	Inferences
+  
+  - Results lead the author to retain the null hypothesis, ¬¬that is there is no significant difference in RI when using connected discourse vs when using nonsense syllables as memory stimuli 
+  b.	Flaws and Limitations
+
+  - The 3x3 design along with a relatively small sample size means this study is likely under-powered
+  
+  - Behavioral linguistics generally
+
+  c.	Suggestions for Flaws and Limitations
+  
+  -	Run a power analysis, determine adequate sample size
+  
+  -	Noam Chomsky to the rescue! 
+
+
+
+
+
+
+
+#Coding problem#
+
+3 points
+
+1. Create a dataframe that capable of representing the design, in as complete a way as you can, in the Slamecka (1960) paper.
+
+```{r}
+
+n <- 36
+OL <- 3
+IL <- 3
+
+design <- matrix(4, ncol = 3, nrow = 3)
+colnames(design) <- c("OL_2", "OL_4", "OL_8")
+row.names(design) <- c("IL_0", "IL_4", "IL_8")
+
+subjects <- 1:36
+OL <- rep(c(2,4,8),12)
+IL <- rep(c(0,4,8), each=12)
+recall <- sample(0:20, 36, replace = TRUE)
+
+library(tibble)
+long_design <- tibble(subjects,
+                      OL,
+                      IL, 
+                      recall)
+
+library(dplyr)
+long_design %>%
+  group_by(OL, IL) %>%
+  count()
+
+#mixed design
+
+mixed_design <- tribble(
+  ~Subjects, ~OL, ~ IL,
+  #--|--|----
+  1, 2, 0,
+  1, 4, 4,
+  1, 8, 8,
+  2, 4, 0,
+  2, 8, 4,
+  2, 2, 8,
+  3, 8, 0,
+  3, 2, 4,
+  3, 4, 8,
+  4, 2, 4,
+  4, 4, 0,
+  4, 8, 8,
+  5, 4, 4,
+  5, 2, 8,
+  5, 8, 0,
+  6, 8, 4,
+  6, 4, 8,
+  6, 2, 0,
+  7, 2, 8,
+  7, 4, 0,
+  7, 8, 4,
+  8, 4, 8,
+  8, 2, 4,
+  8, 8, 0,
+  9, 8, 8,
+  9, 4, 4,
+  9, 2, 0,
+)
+
+
+mixed_design %>%
+  group_by(OL, IL) %>%
+  count() 
+
+
+
+full_mixed_design <- rbind(mixed_design,
+                           mixed_design,
+                           mixed_design,
+                           mixed_design) %>%
+  mutate(Subjects = rep(1:36, each = 3),
+         recall = sample(0:20, 36*3, replace = TRUE))
+         
+  full_mixed_design %>%
+    group_by(OL, IL) %>%
+    summarize(mean_recall = mean(recall), .groups="drop")
+
+
+
+```
+
+
+### References
+
