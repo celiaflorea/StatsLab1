@@ -1,6 +1,6 @@
 Q's for class
 
-How to get the little drop down menau of options when using $ on a function?
+
 
 
 
@@ -16,3 +16,11 @@ How to get the little drop down menau of options when using $ on a function?
     shouldn't the sum of less/greater p-values equal the two tailed test ?
     difference because it is randomising the sample here?
     generally why two.sided and less/greater - rather than two-tailed and uppper/lower'??
+    
+    
+    *note t-test related to F
+    t^2=f
+    
+    Q on lab10 why does effect size go to 1.5? shouldn't  it be 0-1?
+    
+    

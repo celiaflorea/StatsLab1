@@ -141,4 +141,14 @@ lab9 do i need this line/?
  #library(readxl)
 
 #read_excel("lab9/When not choosing leads to not liking_Data")
+
+
+note this line from lab 10 - to plot the power curve 
+replicating t-test 1k times  sim experiments - how many produced a p value <.05
+
+for (i in 1:length(effect_sizes)) {
+  sim_ps <- replicate(1000, t.test(replicate(50, rnorm(1, effect_sizes[i], 1)),
+                                   mu = 0)$p.value)
+                                   
+                                   here in rnorm setting effect sizes instead of mean with SD1, mu/pop mean 0
                 
