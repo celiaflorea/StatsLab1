@@ -1,0 +1,17 @@
+---
+title: "StatsLab2.Lab1"
+author: "celiaflorea"
+date: "2/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Coding problem
+
+3 points
+
+1. Create a dataframe that capable of representing the design, in as complete a way as you can, in the Slamecka (1960) paper.
+
