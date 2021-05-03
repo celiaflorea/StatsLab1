@@ -119,9 +119,6 @@
 \makeatletter
 \renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
 \makeatother
-\usepackage{lineno}
-
-\linenumbers
 \usepackage{csquotes}
 \ifxetex
   % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
@@ -173,7 +170,7 @@ Correspondence concerning this article should be addressed to Celia S. Florea, 2
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Brooklyn College of the City University of New York}
 
 \abstract{
-This is a reproducible report based on a reanalysis of study 4 from Schroeder \& Epley (2015) entitled ``Do you come across as smarter when people read what you say or hear what you say?'' Their analyis and the reproduced analyis here do indeed provide compelling support for their hypothesis speech conveys information about a persons' mental capacity which cannot be capatured in text.
+This is a reproducible report based on a reanalysis of study 4 from Schroeder \& Epley (2015) entitled ``Do you come across as smarter when people read what you say or hear what you say?'' Their analysis and the reproduced analysis here do indeed provide compelling support for their hypothesis speech conveys information about a persons' mental capacity which cannot be capatured in text.
 }
 
 
@@ -208,7 +205,7 @@ The recruiters ratings of the job candidates pitches were collapsed into into co
 \hypertarget{data-analysis}{%
 \subsection{Data analysis}\label{data-analysis}}
 
-We used R {[}Version 4.0.2; R Core Team (2020){]} and the R-packages \emph{apaTables} {[}Version 2.0.8; Stanley (2021){]}, \emph{crayon} {[}Version 1.4.0; Csárdi (2017){]}, \emph{csvread} {[}Version 1.2.1; Izrailev (2018){]}, \emph{data.table} {[}Version 1.13.6; Dowle and Srinivasan (2020){]}, \emph{dplyr} {[}Version 1.0.3; Wickham, François, Henry, and Müller (2021){]}, \emph{forcats} {[}Version 0.5.1; Wickham (2021){]}, \emph{ggplot2} {[}Version 3.3.3; Wickham (2016){]}, \emph{ggpmisc} {[}Version 0.3.8.1; Aphalo (2021){]}, \emph{kableExtra} {[}Version 1.3.1; Zhu (2020){]}, \emph{latex2exp} {[}Version 0.4.0; Meschiari (2015){]}, \emph{latexpdf} {[}Version 0.1.6; Bergsma (2018){]}, \emph{pandocfilters} {[}Version 0.1.4; Schwendinger and Hornik (2019){]}, \emph{papaja} {[}Version 0.1.0.9997; Aust and Barth (2020){]}, \emph{purrr} {[}Version 0.3.4; Henry and Wickham (2020){]}, \emph{pwr} {[}Version 1.3.0; Champely (2020){]}, \emph{readr} {[}Version 1.4.0; Wickham, Hester, and Francois (2018){]}, \emph{stringr} {[}Version 1.4.0; Wickham (2019){]}, \emph{tibble} {[}Version 3.0.6; Müller and Wickham (2021){]}, \emph{tidyr} {[}Version 1.1.2; Wickham (2020){]}, \emph{tidyverse} {[}Version 1.3.0; Wickham et al. (2019){]}, and \emph{tinytex} {[}Version 0.29; Xie (2019){]} for all our analyses.
+We used R {[}Version 4.0.2; R Core Team (2020){]} and the R-packages \emph{apaTables} {[}Version 2.0.8; Stanley (2021){]}, \emph{crayon} {[}Version 1.4.0; Csárdi (2017){]}, \emph{csvread} {[}Version 1.2.1; Izrailev (2018){]}, \emph{data.table} {[}Version 1.13.6; Dowle and Srinivasan (2020){]}, \emph{dplyr} {[}Version 1.0.3; Wickham, François, Henry, and Müller (2021){]}, \emph{forcats} {[}Version 0.5.1; Wickham (2021){]}, \emph{ggplot2} {[}Version 3.3.3; Wickham (2016){]}, \emph{ggpmisc} {[}Version 0.3.8.1; Aphalo (2021){]}, \emph{kableExtra} {[}Version 1.3.1; Zhu (2020){]}, \emph{latex2exp} {[}Version 0.5.0; Meschiari (2015){]}, \emph{latexpdf} {[}Version 0.1.6; Bergsma (2018){]}, \emph{pandocfilters} {[}Version 0.1.4; Schwendinger and Hornik (2019){]}, \emph{papaja} {[}Version 0.1.0.9997; Aust and Barth (2020){]}, \emph{purrr} {[}Version 0.3.4; Henry and Wickham (2020){]}, \emph{pwr} {[}Version 1.3.0; Champely (2020){]}, \emph{readr} {[}Version 1.4.0; Wickham, Hester, and Francois (2018){]}, \emph{stringr} {[}Version 1.4.0; Wickham (2019){]}, \emph{tibble} {[}Version 3.0.6; Müller and Wickham (2021){]}, \emph{tidyr} {[}Version 1.1.2; Wickham (2020){]}, \emph{tidyverse} {[}Version 1.3.0; Wickham et al. (2019){]}, and \emph{tinytex} {[}Version 0.31; Xie (2019){]} for all our analyses.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -274,11 +271,11 @@ We used R {[}Version 4.0.2; R Core Team (2020){]} and the R-packages \emph{apaTa
 \end{verbatim}
 
 The results of this analysis are consistent with the original authors in that the mean ratings of the professional recruiters were greater in each condition when they heard audio recordings than read the job seekers elevator pitch. As is also the case of studies 1-3, in study 4 the recruiters rated candidates as more intelligent in the audio than transcript condition \(\Delta M = -1.99\), 95\% CI \([-3.13\), \(-0.85]\), \(t(37) = -3.53\), \(p = .001\), likewise their overall impression of the candidates \(\Delta M = -1.89\), 95\% CI \([-3.24\), \(-0.55]\), \(t(37) = -2.85\), \(p = .007\) and the likelihood that they would hire the candidate \(\Delta M = -1.83\), 95\% CI \([-3.24\), \(-0.41]\), \(t(37) = -2.62\), \(p = .013\) was greater in the audio than transcript condition.
-\includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-2-1.pdf}
 \includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-3-1.pdf}
 \includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-4-1.pdf}
-
 \includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -287,7 +284,7 @@ The results here conform with those found by Schroeder \& Epley (2015) from expe
 
 \#Powercurve
 
-\includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{CSF-semester-project_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 \newpage
 
